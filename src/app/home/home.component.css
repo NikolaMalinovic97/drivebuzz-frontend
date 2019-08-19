@@ -1,0 +1,13 @@
+.btn {
+    width: 16%;
+    margin: 2%;
+}
+
+img {
+    height: 40%;
+    background-size: cover;
+}
+
+h1, h5 {
+    text-shadow: -2px -1px 0 #000, 2px -1px 0 #000, -2px 1px 0 #000, 2px 1px 0 #000;
+}
