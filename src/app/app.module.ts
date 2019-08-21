@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { CarouselComponent } from './home/carousel/carousel.component';
 import { HomeContentComponent } from './home/home-content/home-content.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { HomeContentComponent } from './home/home-content/home-content.component
     HeaderComponent,
     HomeComponent,
     CarouselComponent,
-    HomeContentComponent
+    HomeContentComponent,
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
