@@ -1,3 +1,24 @@
-<p>
-  signin works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 mt-5">
+      <div class="form-wrapper">
+        <form (ngSubmit)="onSignin(form)" #form="ngForm">
+          <img src="assets/images/drivebuzz-logo.png" alt="logo" class="mt-2">
+          <div class="input-group mb-3 mt-5">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fas fa-user"></i></div>
+            </div>
+            <input type="text" class="form-control" id="user" placeholder="Username">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fas fa-key"></i></div>
+            </div>
+            <input type="password" class="form-control" id="pass" placeholder="Password">
+          </div>
+          <button class="btn btn-primary form-control mt-2" type="submit">Sign In</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
