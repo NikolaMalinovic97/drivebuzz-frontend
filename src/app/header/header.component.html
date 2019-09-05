@@ -24,9 +24,13 @@
         <a class="nav-link" routerLink="/demands">Demands</a>
       </li>
     </ul>
-    <ul class="nav navbar-nav">
+    <ul *ngIf="!signedUserService.isUserSigned()" class="nav navbar-nav">
       <li><a class="nav-link" routerLink="/signin">Login</a></li>
       <li><a class="nav-link" routerLink="/signup">Sign Up</a></li>
+    </ul>
+    <ul *ngIf="signedUserService.isUserSigned()" class="nav navbar-nav">
+      <li><a class="nav-link" routerLink="">My Profile</a></li>
+      <li><a class="nav-link" routerLink="/signin" (click)="onLogOut()">Log out</a></li>
     </ul>
   </div>
 </nav>

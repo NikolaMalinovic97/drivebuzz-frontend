@@ -15,10 +15,22 @@ export class SignedUserService {
     return this.signedUser;
   }
 
+  isUserSigned() {
+    if (this.signedUser == null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   signIn(username: string, password: string) {
     this.userService.validateUser(username, password)
         .subscribe((data: User) => {
           this.signedUser = data;
         });
+  }
+
+  logOut() {
+    this.signedUser = null;
   }
 }

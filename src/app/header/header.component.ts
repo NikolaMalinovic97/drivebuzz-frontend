@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SignedUserService } from '../auth/signin/signed-user.service';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  isCollapsed = false;
-
-  constructor() { }
+  constructor(private signedUserService: SignedUserService) { }
 
   ngOnInit() {
   }
 
+  onLogOut() {
+    this.signedUserService.logOut();
+  }
 }

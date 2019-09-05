@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { UserService } from 'src/app/services/user.service';
 import { SignedUserService } from './signed-user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -12,7 +12,7 @@ export class SigninComponent implements OnInit {
 
   isFormValid = true;
 
-  constructor(private userService: UserService, private signedUserService: SignedUserService) { }
+  constructor(private router: Router, private signedUserService: SignedUserService) { }
 
   ngOnInit() {
   }
@@ -30,10 +30,11 @@ export class SigninComponent implements OnInit {
               validateUser(username: string, password: string) {
                 this.signedUserService.signIn(username, password);
                   setTimeout(() => {
-                    if (this.signedUserService.getSignedUser() == null) {
-                      this.isFormValid = false;
-                    } else {
+                    if (this.signedUserService.isUserSigned()) {
                       this.isFormValid = true;
+                      this.router.navigate(['home']);
+                    } else {
+                      this.isFormValid = false;
                     }
                   },
                   400);
