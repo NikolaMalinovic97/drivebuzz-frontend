@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 mt-5">
-      <div *ngIf="isFormValid" class="alert alert-danger" role="alert">
+      <div *ngIf="!isFormValid" class="alert alert-danger" role="alert">
         Username or password is invalid!
       </div>
       <div class="form-wrapper">
