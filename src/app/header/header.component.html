@@ -29,8 +29,24 @@
       <li><a class="nav-link" routerLink="/signup">Sign Up</a></li>
     </ul>
     <ul *ngIf="signedUserService.isUserSigned()" class="nav navbar-nav">
-      <li><a class="nav-link" routerLink="/my-profile">My Profile</a></li>
-      <li><a class="nav-link" routerLink="/signin" (click)="onLogOut()">Log out</a></li>
+      <li><a class="nav-link" routerLink=""> <i class="fas fa-lg fa-inbox"></i> </a></li>
+      <li><a class="nav-link" routerLink=""> <i class="fas fa-lg fa-exclamation-circle"></i> </a></li>
+      <li><a class="nav-link" routerLink="/my-profile"> <i class="far fa-lg fa-id-card"></i> </a></li>
+      <li>
+        <div class="btn-group">
+          <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <button class="dropdown-item" type="button">My offers</button>
+            <button class="dropdown-item" type="button">My demands</button>
+            <button class="dropdown-item" type="button">Create offer</button>
+            <button class="dropdown-item" type="button">Create demand</button>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item" type="button" routerLink="/signin" (click)="onLogOut()"><i class="fas fa-sign-out-alt"></i> Log out</button>
+          </div>
+        </div>
+      </li>
     </ul>
   </div>
 </nav>

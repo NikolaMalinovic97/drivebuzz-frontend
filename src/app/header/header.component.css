@@ -1,4 +1,4 @@
-a {
+a, .dropdown-item {
     color: white !important;
 }
 
@@ -10,6 +10,11 @@ a:hover {
     color: rgb(255, 145, 0) !important;
 }
 
+.nav-item {
+    border-top: 2px rgba(0, 0, 0, 0) solid;
+    border-bottom: 2px rgba(0, 0, 0, 0) solid;
+}
+
 .nav-item:hover {
     background: rgba(255, 255, 255, 0.15);
     border-radius: 15%;
@@ -17,7 +22,11 @@ a:hover {
     border-bottom: 2px rgb(255, 145, 0) solid;
 }
 
-.nav-item {
-    border-top: 2px rgba(0, 0, 0, 0) solid;
-    border-bottom: 2px rgba(0, 0, 0, 0) solid;
+.dropdown-menu {
+    background: #007bff;
+    border: 1px solid rgb(255, 145, 0);
+}
+
+.dropdown-item:hover {
+    background: #006ce0;
 }
