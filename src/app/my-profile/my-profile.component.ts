@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SignedUserService } from '../auth/signin/signed-user.service';
+import { User } from '../entities/user.entity';
 
 @Component({
   selector: 'app-my-profile',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyProfileComponent implements OnInit {
 
-  constructor() { }
+  user: User;
+
+  constructor(private signedUserService: SignedUserService) { }
 
   ngOnInit() {
+    this.user = this.signedUserService.getSignedUser();
   }
 
 }
