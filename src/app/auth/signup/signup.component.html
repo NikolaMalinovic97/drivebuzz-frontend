@@ -1,3 +1,62 @@
-<p>
-  signup works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 mt-5">
+      <form (ngSubmit)="onRegister(form)" #form="ngForm">
+        <small id="emailHelp" class="form-text text-muted mt-3">Required*</small>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fas fa-user"></i></div>
+          </div>
+          <input type="text" id="username" name="username" placeholder="Username" 
+            ngModel class="form-control" required minlength="8">
+        </div>
+        <small id="emailHelp" class="form-text text-muted">Required*</small>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fas fa-key"></i></div>
+          </div>
+          <input type="password" id="password" name="password" placeholder="Password"
+            ngModel class="form-control" required minlength="6">
+        </div>
+        <small id="emailHelp" class="form-text text-muted">Required*</small>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fas fa-lock"></i></div>
+          </div>
+          <input type="password" id="repeat-password" name="repeat-password" placeholder="Repeat your password"
+            ngModel class="form-control" required minlength="6">
+        </div>
+        <hr>
+        <div class="input-group mb-3 mt-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fas fa-at"></i></div>
+          </div>
+          <input type="text" id="email" name="email" placeholder="Email" 
+            ngModel class="form-control" required minlength="8">
+        </div>
+        <div class="input-group mb-3 mt-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fas fa-signature"></i></div>
+          </div>
+          <input type="text" id="firstName" name="firstName" placeholder="First name" 
+            ngModel class="form-control" required minlength="8">
+        </div>
+        <div class="input-group mb-3 mt-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fas fa-signature"></i></div>
+          </div>
+          <input type="text" id="lastName" name="lastName" placeholder="Last name" 
+            ngModel class="form-control" required minlength="8">
+        </div>
+        <div class="input-group mb-3 mt-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fas fa-phone"></i></div>
+          </div>
+          <input type="text" id="phone" name="phone" placeholder="Phone number" 
+            ngModel class="form-control" required minlength="8">
+        </div>
+        <button class="btn btn-primary form-control mt-2" type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+</div>
