@@ -1,7 +1,12 @@
 form {
     padding: 15px;
+    background: rgb(255, 145, 0);
 }
 
-.col-12 {
-    background: rgb(255, 145, 0);
+.help-block {
+    color: rgb(197, 0, 0);
+}
+
+input.ng-invalid.ng-touched {
+    border: 2px solid rgb(197, 0, 0);
 }

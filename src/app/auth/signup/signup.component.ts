@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -9,22 +10,47 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
+  usernameExists: boolean;
+  errorMessage: string;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.signupForm = new FormGroup({
-      'username': new FormControl(null),
-      'password': new FormControl(null),
-      'repeatPassword': new FormControl(null),
-      'email': new FormControl(null),
-      'firstName': new FormControl(null),
-      'lastName': new FormControl(null),
-      'phone': new FormControl(null),
+      'username': new FormControl(null, [Validators.required, Validators.minLength(6), Validators.maxLength(15),
+                                        Validators.pattern(/^[a-zA-Z0-9]+([_ -]?[a-zA-Z0-9])*$/)]),
+      'password': new FormControl(null, [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
+      'repeatPassword': new FormControl(null, [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'firstName': new FormControl(null, Validators.maxLength(45)),
+      'lastName': new FormControl(null, Validators.maxLength(45)),
+      'phone': new FormControl(null, Validators.maxLength(20)),
     });
+    this.errorMessage = null;
   }
 
   onSubmit() {
-    console.log(this.signupForm);
+    if (this.usernameExists) {
+      this.errorMessage = 'Username already exists!';
+    } else if (!this.passwordsMatch()) {
+      this.errorMessage = 'Passwords do not match!';
+    }
+  }
+
+              passwordsMatch(): boolean {
+                const password = this.signupForm.get('password').value;
+                const repeatPassword = this.signupForm.get('repeatPassword').value;
+                if (password === repeatPassword) {
+                  return true;
+                }
+                return false;
+              }
+
+  checkUsername() {
+    const username: string = this.signupForm.get('username').value;
+    this.userService.doesUsernameExist(username)
+      .subscribe((data: boolean) => {
+        this.usernameExists = data;
+      });
   }
 }

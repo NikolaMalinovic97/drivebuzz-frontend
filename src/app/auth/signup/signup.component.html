@@ -5,7 +5,10 @@
                 col-lg-6 offset-lg-3 
                 col-xl-4 offset-xl-4 
                 mt-5">
-      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <div *ngIf="errorMessage != null" class="alert alert-danger mt-1" role="alert">
+        {{ errorMessage }}
+      </div>
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="mt-5">
         <small id="emailHelp" class="form-text text-muted mt-3">
           Required*
         </small>
@@ -20,8 +23,12 @@
             id="username" 
             formControlName="username" 
             placeholder="Username" 
-            class="form-control">
+            class="form-control"
+            (blur)="checkUsername()">
         </div>
+        <span
+          *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched"
+          class="help-block">Please enter a valid username.</span>
         <small id="emailHelp" class="form-text text-muted">
           Required*
         </small>
@@ -38,6 +45,9 @@
             placeholder="Password"
             class="form-control">
         </div>
+        <span
+          *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched"
+          class="help-block">Please enter a valid password.</span>
         <small id="emailHelp" class="form-text text-muted">
           Required*
         </small>
@@ -54,7 +64,12 @@
             placeholder="Repeat your password"
             class="form-control">
         </div>
-        <hr>
+        <span
+          *ngIf="!signupForm.get('repeatPassword').valid && signupForm.get('repeatPassword').touched"
+          class="help-block">Please enter a valid password.</span>
+        <small id="emailHelp" class="form-text text-muted">
+          Required*
+        </small>
         <div class="input-group mb-3 mt-2">
           <div class="input-group-prepend">
             <div class="input-group-text">
@@ -68,6 +83,10 @@
             placeholder="Email" 
             class="form-control">
         </div>
+        <span
+          *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched"
+          class="help-block">Please enter a valid email.</span>
+        <hr>
         <div class="input-group mb-3 mt-2">
           <div class="input-group-prepend">
             <div class="input-group-text">

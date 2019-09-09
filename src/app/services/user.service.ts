@@ -20,4 +20,8 @@ export class UserService {
   getUserById(id: number): Observable<User> {
     return this.http.get<User>(this.url + '/' + id, {headers: this.headers});
   }
+
+  doesUsernameExist(username: string) {
+    return this.http.get<boolean>(this.url + '/exist/' + username, {headers: this.headers});
+  }
 }
