@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/entities/user.entity';
+import { UserInfo } from 'src/app/entities/user-info.entity';
 
 @Component({
   selector: 'app-signup',
@@ -34,6 +36,13 @@ export class SignupComponent implements OnInit {
       this.errorMessage = 'Username already exists!';
     } else if (!this.passwordsMatch()) {
       this.errorMessage = 'Passwords do not match!';
+    } else if (!this.signupForm.valid) {
+      this.errorMessage = 'Form is not valid!';
+    } else {
+      this.errorMessage = null;
+      const newUser = this.createNewUser();
+      this.userService.addUser(newUser).subscribe();
+      console.log(newUser);
     }
   }
 
@@ -44,6 +53,23 @@ export class SignupComponent implements OnInit {
                   return true;
                 }
                 return false;
+              }
+
+              createNewUser(): User {
+                const theUser = new User();
+                // theUser.id = 0;
+                theUser.role = 'customer';
+                theUser.username = this.signupForm.get('username').value;
+                theUser.password = this.signupForm.get('password').value;
+
+                const theUserInfo = new UserInfo();
+                theUserInfo.firstName = this.signupForm.get('firstName').value;
+                theUserInfo.lastName = this.signupForm.get('lastName').value;
+                theUserInfo.email = this.signupForm.get('email').value;
+                theUserInfo.phone = this.signupForm.get('phone').value;
+
+                theUser.userInfo = theUserInfo;
+                return theUser;
               }
 
   checkUsername() {

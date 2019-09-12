@@ -24,4 +24,8 @@ export class UserService {
   doesUsernameExist(username: string) {
     return this.http.get<boolean>(this.url + '/exist/' + username, {headers: this.headers});
   }
+
+  addUser(theUser: User) {
+    return this.http.post<User>(this.url, theUser, {headers: this.headers});
+  }
 }

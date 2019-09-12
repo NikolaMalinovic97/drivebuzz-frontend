@@ -7,4 +7,26 @@ export class User {
     password: string;
     role: string;
     userInfo: UserInfo;
+
+    constructor() {}
+
+    getId() {
+        return this.id;
+    }
+
+    getUsername() {
+        return this.username;
+    }
+
+    getPassword() {
+        return this.password;
+    }
+
+    getRole() {
+        return this.role;
+    }
+
+    getUserInfo() {
+        return this.userInfo;
+    }
 }

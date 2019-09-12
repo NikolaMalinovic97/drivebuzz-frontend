@@ -4,12 +4,14 @@ import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { OffersComponent } from './offers/offers.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'my-profile', component: MyProfileComponent },
+  { path: 'offers', component: OffersComponent },
   { path: '**', redirectTo: 'home' }
 ];
 
