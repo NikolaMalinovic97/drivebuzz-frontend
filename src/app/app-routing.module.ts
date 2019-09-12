@@ -5,6 +5,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { OffersComponent } from './offers/offers.component';
+import { DemandsComponent } from './demands/demands.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'my-profile', component: MyProfileComponent },
   { path: 'offers', component: OffersComponent },
+  { path: 'demands', component: DemandsComponent },
   { path: '**', redirectTo: 'home' }
 ];
 
