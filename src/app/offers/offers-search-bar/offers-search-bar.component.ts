@@ -12,4 +12,7 @@ export class OffersSearchBarComponent implements OnInit {
   ngOnInit() {
   }
 
+  test() {
+    console.log('radi!');
+  }
 }
