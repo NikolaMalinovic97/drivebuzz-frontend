@@ -14,6 +14,8 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { OffersComponent } from './offers/offers.component';
 import { DemandsComponent } from './demands/demands.component';
+import { OffersSearchBarComponent } from './offers/offers-search-bar/offers-search-bar.component';
+import { OffersListComponent } from './offers/offers-list/offers-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { DemandsComponent } from './demands/demands.component';
     SignupComponent,
     MyProfileComponent,
     OffersComponent,
-    DemandsComponent
+    DemandsComponent,
+    OffersSearchBarComponent,
+    OffersListComponent
   ],
   imports: [
     BrowserModule,
