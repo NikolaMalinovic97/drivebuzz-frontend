@@ -12,4 +12,6 @@ export class Offer {
     dateCreated: string;
     active: boolean;
     user: User;
+
+    constructor() {}
 }

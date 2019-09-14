@@ -1,1 +1,17 @@
-<h1>Offers list</h1>
+<div *ngFor="let offer of offers; let i = index">
+    <a
+        style="cursor: pointer;"
+        class="list-group-item clearfix mt-2"
+        (click)="testId(offer.id)"
+    >
+        <h3 class="list-group-item-heading">{{ offer.departurePlace }} - {{ offer.destinationPlace }}</h3>
+        <div class="float-left">
+            <h4>Free seats: {{ offer.seatsNumber }}</h4> 
+            <p>Active: {{ offer.active }}</p>
+        </div>
+        <span>
+            <p class="list-group-item-text text-right">Date: {{ offer.departureDate }}</p>
+            <p class="list-group-item-text text-right">Time: {{ offer.departureTime }}</p>
+        </span>
+    </a>
+</div>
