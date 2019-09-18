@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Offer } from 'src/app/entities/offer.entity';
 import { OfferService } from 'src/app/services/offer.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-offers-list',
@@ -17,7 +17,8 @@ export class OffersListComponent implements OnInit {
   private pages: number[];
   private currentPage: number;
 
-  constructor(private offerService: OfferService, private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router,
+              private offerService: OfferService) { }
 
   ngOnInit() {
     this.offerService.loadAllOffers()
@@ -61,6 +62,18 @@ export class OffersListComponent implements OnInit {
     }
     for (let i = firstIndex; i <= lastIndex; i++) {
       this.pageOffers.push(this.allOffers[i]);
+    }
+  }
+
+  onPrevious() {
+    if (this.currentPage > 1) {
+      this.router.navigate(['/offers', --this.currentPage]);
+    }
+  }
+
+  onNext() {
+    if (this.currentPage < this.numberOfPages) {
+      this.router.navigate(['/offers', ++this.currentPage]);
     }
   }
 

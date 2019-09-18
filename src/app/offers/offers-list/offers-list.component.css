@@ -10,3 +10,17 @@ a {
 .list-group-item:hover {
     border: 2px solid rgb(0, 123, 255);
 }
+
+.page-link {
+    background: rgb(0, 123, 255);
+    color: white !important;
+    border-color: rgb(255, 186, 96);
+}
+
+.page-link:hover {
+    background: rgb(0, 90, 187);
+}
+
+.active {
+    background: rgb(0, 90, 187);
+}
