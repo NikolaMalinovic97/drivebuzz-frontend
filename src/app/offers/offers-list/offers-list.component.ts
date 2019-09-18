@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Offer } from 'src/app/entities/offer.entity';
+import { OfferService } from 'src/app/services/offer.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-offers-list',
@@ -8,40 +10,58 @@ import { Offer } from 'src/app/entities/offer.entity';
 })
 export class OffersListComponent implements OnInit {
 
-  private offers: Offer[];
+  private allOffers: Offer[];
+  private pageOffers: Offer[];
 
-  constructor() { }
+  private numberOfPages: number;
+  private pages: number[];
+  private currentPage: number;
+
+  constructor(private offerService: OfferService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    const offer1 = new Offer();
-    offer1.id = 1;
-    offer1.active = true;
-    offer1.seatsNumber = 4;
-    offer1.departureDate = '22.10.2019';
-    offer1.departureTime = '12:00';
-    offer1.departurePlace = 'Doboj';
-    offer1.destinationPlace = 'Banja Luka';
-    offer1.timeCreated = '10:00';
-    offer1.dateCreated = '31-12-2018';
-    const offer2 = new Offer();
-    offer2.id = 2;
-    offer2.active = true;
-    offer2.seatsNumber = 4;
-    offer2.departureDate = '22.10.2019';
-    offer2.departureTime = '12:00';
-    offer2.departurePlace = 'Bijeljina';
-    offer2.destinationPlace = 'Beograd';
-    offer2.timeCreated = '10:00';
-    offer2.dateCreated = '31-12-2018';
-    this.offers = [offer1, offer2];
-    this.offers.push(offer1);
-    this.offers.push(offer1);
-    this.offers.push(offer1);
-    this.offers.push(offer1);
-    this.offers.push(offer1);
-    this.offers.push(offer1);
-    this.offers.push(offer1);
-    this.offers.push(offer1);
+    this.offerService.loadAllOffers()
+      .subscribe((data: Offer[]) => {
+        this.allOffers = data;
+        this.numberOfPages = Math.ceil(this.allOffers.length / 10);
+      });
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.currentPage = +params['page'];
+        setTimeout(() => {
+          this.setPages(this.currentPage);
+          this.setPageOffersByPage(this.currentPage);
+        },
+        200);
+      }
+    );
+  }
+
+  setPages(currentPage: number) {
+    this.pages = [];
+    if (currentPage < 3) {
+      for (let i = 1; i <= this.numberOfPages; i++) {
+        this.pages.push(i);
+      }
+    } else {
+      const firstPage = this.currentPage - 2;
+      const lastPage = this.currentPage + 2;
+      for (let i = firstPage; i <= lastPage || i <= this.numberOfPages; i++) {
+        this.pages.push(i);
+      }
+    }
+  }
+
+  setPageOffersByPage(page: number) {
+    this.pageOffers = [];
+    const firstIndex = page * 10 - 10;
+    let lastIndex = page * 10 - 1;
+    if (lastIndex > this.allOffers.length - 1) {
+      lastIndex = this.allOffers.length - 1;
+    }
+    for (let i = firstIndex; i <= lastIndex; i++) {
+      this.pageOffers.push(this.allOffers[i]);
+    }
   }
 
   testId(id: number) {
