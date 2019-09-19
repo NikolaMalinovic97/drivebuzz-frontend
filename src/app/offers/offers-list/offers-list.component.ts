@@ -76,8 +76,4 @@ export class OffersListComponent implements OnInit {
       this.router.navigate(['/offers', ++this.currentPage]);
     }
   }
-
-  testId(id: number) {
-    console.log(id);
-  }
 }

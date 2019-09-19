@@ -16,6 +16,7 @@ import { OffersComponent } from './offers/offers.component';
 import { DemandsComponent } from './demands/demands.component';
 import { OffersSearchBarComponent } from './offers/offers-search-bar/offers-search-bar.component';
 import { OffersListComponent } from './offers/offers-list/offers-list.component';
+import { OfferDetailComponent } from './offers/offer-detail/offer-detail.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { OffersListComponent } from './offers/offers-list/offers-list.component'
     OffersComponent,
     DemandsComponent,
     OffersSearchBarComponent,
-    OffersListComponent
+    OffersListComponent,
+    OfferDetailComponent
   ],
   imports: [
     BrowserModule,

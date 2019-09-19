@@ -1,11 +1,11 @@
 <div *ngIf="allOffers == undefined">
     <p>Loading...</p>
 </div>
-<div *ngFor="let offer of pageOffers; let i = index">
+<div *ngFor="let offer of pageOffers">
     <a
         style="cursor: pointer;"
         class="list-group-item clearfix mt-2"
-        (click)="testId(offer.id)"
+        [routerLink]="['/offers','detail', offer.id]"
     >
         <h3 class="list-group-item-heading">
             {{ offer.departurePlace }} - {{ offer.destinationPlace }}
