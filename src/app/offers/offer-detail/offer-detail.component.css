@@ -1,0 +1,23 @@
+h1,h2,h4 {
+    color: rgb(0, 123, 255);
+}
+
+p {
+    color: rgb(0, 90, 187);
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    width: 200px;
+}
+
+.info-text {
+    color: white;
+}
+
+.col-12 {
+    background: orange;
+}

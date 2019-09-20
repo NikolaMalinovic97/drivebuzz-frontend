@@ -1,3 +1,55 @@
-<p>
-  offer-detail works!
-</p>
+<div *ngIf="offer != undefined" class="container-fluid">
+  <div class="row mt-4">
+    <div class="col-12 
+                col-sm-10 offset-sm-1
+                col-md-8 offset-md-2
+                col-lg-6 offset-lg-3 
+                col-xl-6 offset-xl-3">
+      <h1 class="text-center mt-2">
+        {{ offer.departurePlace }} - {{ offer.destinationPlace }}
+      </h1>
+      <hr>
+      <h2 class="text-center">DEPARTURE</h2>
+      <h4>PLACE: 
+        <span class="info-text">
+          {{ offer.departurePlace }}
+        </span>
+      </h4>
+      <h4>DATE: 
+        <span class="info-text">
+            {{ offer.departureDate }}
+        </span>
+      </h4>
+      <h4>TIME: 
+        <span class="info-text">
+            {{ offer.departureTime }}
+        </span>
+      </h4>
+      <hr>
+      <h2 class="text-center">DESTINATION</h2>
+      <h4>PLACE: 
+        <span class="info-text">
+            {{ offer.destinationPlace }}
+        </span>
+      </h4>
+      <hr>
+      <h2 class="text-center">SEATS LEFT: 
+        <span class="info-text">
+            {{ offer.seatsNumber }}
+        </span>
+      </h2>
+      <div class="text-center">
+        <button type="button" class="btn btn-success btn-lg">Join</button>
+      </div>
+      <p class="float-left mt-2">
+        User: 
+        <a href="">
+            {{ offer.user.username }}
+        </a>
+      </p>
+      <p class="float-right mt-2">
+        Created: {{ offer.dateCreated }} {{ offer.timeCreated }}
+      </p>
+    </div>
+  </div>
+</div>

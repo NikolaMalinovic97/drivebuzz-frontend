@@ -15,4 +15,8 @@ export class OfferService {
   loadAllOffers() {
     return this.http.get(this.url, {headers: this.headers});
   }
+
+  getOfferById(id: number) {
+    return this.http.get(this.url + '/' + id, {headers: this.headers});
+  }
 }
