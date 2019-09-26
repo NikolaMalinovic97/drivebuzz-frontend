@@ -13,6 +13,7 @@ export class OffersListComponent implements OnInit {
   private allOffers: Offer[];
   private pageOffers: Offer[];
 
+  private type: string;
   private numberOfPages: number;
   private pages: number[];
   private currentPage: number;
@@ -29,6 +30,7 @@ export class OffersListComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         this.currentPage = +params['page'];
+        this.setOffersBasedOnType(params['type']);
         setTimeout(() => {
           this.setPages(this.currentPage);
           this.setPageOffersByPage(this.currentPage);
@@ -36,6 +38,10 @@ export class OffersListComponent implements OnInit {
         200);
       }
     );
+  }
+
+  setOffersBasedOnType(type: string) {
+    console.log(type);
   }
 
   setPages(currentPage: number) {
