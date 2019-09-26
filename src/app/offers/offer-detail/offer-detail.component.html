@@ -5,7 +5,16 @@
                 col-md-8 offset-md-2
                 col-lg-6 offset-lg-3 
                 col-xl-6 offset-xl-3">
-      <h1 class="text-center mt-2">
+      <p class="float-left mt-2">
+        User: 
+        <a href="">
+            {{ offer.user.username }}
+        </a>
+      </p>
+      <p class="float-right mt-2">
+        Created: {{ offer.dateCreated }} {{ offer.timeCreated }}
+      </p>
+      <h1 class="text-center mt-5">
         {{ offer.departurePlace }} - {{ offer.destinationPlace }}
       </h1>
       <hr>
@@ -41,15 +50,17 @@
       <div class="text-center">
         <button type="button" class="btn btn-success btn-lg">Join</button>
       </div>
-      <p class="float-left mt-2">
-        User: 
-        <a href="">
-            {{ offer.user.username }}
-        </a>
-      </p>
-      <p class="float-right mt-2">
-        Created: {{ offer.dateCreated }} {{ offer.timeCreated }}
-      </p>
+    </div>
+    <div class="col-12 
+                col-sm-10 offset-sm-1
+                col-md-8 offset-md-2
+                col-lg-6 offset-lg-3 
+                col-xl-6 offset-xl-3
+                map-wrapper">
+        <agm-map [latitude]="latitude" [longitude]="longitude">
+          <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+          <agm-marker [latitude]="latitude2" [longitude]="longitude2"></agm-marker>
+        </agm-map>
     </div>
   </div>
 </div>

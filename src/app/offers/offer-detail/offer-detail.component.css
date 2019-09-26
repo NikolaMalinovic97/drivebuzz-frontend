@@ -1,3 +1,7 @@
+agm-map {
+    height: 400px;
+}
+
 h1,h2,h4 {
     color: rgb(0, 123, 255);
 }
@@ -12,6 +16,7 @@ a {
 
 button {
     width: 200px;
+    margin-bottom: 40px;
 }
 
 .info-text {
@@ -20,4 +25,9 @@ button {
 
 .col-12 {
     background: orange;
+}
+
+.map-wrapper {
+    padding-bottom: 20px;
+    margin-bottom: 20px; 
 }

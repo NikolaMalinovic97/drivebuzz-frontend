@@ -8,6 +8,9 @@
       <div *ngIf="errorMessage != null" class="alert alert-danger mt-1" role="alert">
         {{ errorMessage }}
       </div>
+      <div *ngIf="successMessage != null" class="alert alert-success mt-1" role="alert">
+        {{ successMessage }}
+      </div>
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="mt-5">
         <small id="emailHelp" class="form-text text-muted mt-3">
           Required*

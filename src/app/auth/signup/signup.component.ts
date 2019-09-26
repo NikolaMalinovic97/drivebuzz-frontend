@@ -14,6 +14,7 @@ export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   usernameExists: boolean;
   errorMessage: string;
+  successMessage: string;
 
   constructor(private userService: UserService) { }
 
@@ -29,16 +30,21 @@ export class SignupComponent implements OnInit {
       'phone': new FormControl(null, Validators.maxLength(20)),
     });
     this.errorMessage = null;
+    this.successMessage = null;
   }
 
   onSubmit() {
     if (this.usernameExists) {
       this.errorMessage = 'Username already exists!';
+      this.successMessage = null;
     } else if (!this.passwordsMatch()) {
       this.errorMessage = 'Passwords do not match!';
+      this.successMessage = null;
     } else if (!this.signupForm.valid) {
       this.errorMessage = 'Form is not valid!';
+      this.successMessage = null;
     } else {
+      this.successMessage = 'You have been successfully signed up!';
       this.errorMessage = null;
       const newUser = this.createNewUser();
       this.userService.addUser(newUser).subscribe();
@@ -57,7 +63,6 @@ export class SignupComponent implements OnInit {
 
               createNewUser(): User {
                 const theUser = new User();
-                // theUser.id = 0;
                 theUser.role = 'customer';
                 theUser.username = this.signupForm.get('username').value;
                 theUser.password = this.signupForm.get('password').value;

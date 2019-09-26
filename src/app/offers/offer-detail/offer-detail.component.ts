@@ -12,6 +12,12 @@ export class OfferDetailComponent implements OnInit {
 
   private offer: Offer;
 
+  private latitude = 51.678418;
+  private longitude = 7.809007;
+
+  private latitude2 = 51.878418;
+  private longitude2 = 7.919007;
+
   constructor(private route: ActivatedRoute, private offerService: OfferService) { }
 
   ngOnInit() {
