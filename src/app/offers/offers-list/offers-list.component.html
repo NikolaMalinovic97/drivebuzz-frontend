@@ -1,11 +1,14 @@
-<div *ngIf="allOffers == undefined">
+<div *ngIf="offers === undefined">
     <p>Loading...</p>
 </div>
-<div *ngFor="let offer of pageOffers">
+<div *ngIf="offers === null">
+    <p>There are no such offers!</p>
+</div>
+<div *ngFor="let offer of offers">
     <a
         style="cursor: pointer;"
         class="list-group-item clearfix mt-2"
-        [routerLink]="['/offers','detail', offer.id]"
+        [routerLink]="['/offer-detail', offer.id]"
     >
         <h3 class="list-group-item-heading text-center">
             {{ offer.departurePlace }} - {{ offer.destinationPlace }}
@@ -19,15 +22,15 @@
         </div>
         <span>
             <p class="list-group-item-text text-right">
-                Date: {{ offer.departureDate }}
+                Depart. date: {{ offer.departureDate }}
             </p>
             <p class="list-group-item-text text-right">
-                Time: {{ offer.departureTime }}
+                Depart. time: {{ offer.departureTime }}
             </p>
         </span>
     </a>
 </div>
-<nav *ngIf="allOffers != undefined" 
+<nav *ngIf="offers != undefined" 
       aria-label="Page navigation"
       class="mt-3">
     <ul class="pagination pg-blue justify-content-center">
@@ -40,9 +43,10 @@
             </a>
         </li>
         <li *ngFor="let page of pages" class="page-item">
-            <a class="page-link" 
+            <a class="page-link"
+               (click)="scrollToTop()"
                routerLinkActive="active" 
-               [routerLink]="['/offers', page]">
+               [routerLink]="['/offers', offersType, page]">
                 {{ page }}
             </a>
         </li>

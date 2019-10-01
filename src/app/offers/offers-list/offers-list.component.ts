@@ -10,76 +10,65 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 })
 export class OffersListComponent implements OnInit {
 
-  private allOffers: Offer[];
-  private pageOffers: Offer[];
-
-  private type: string;
-  private numberOfPages: number;
-  private pages: number[];
+  private offers: Offer[];
   private currentPage: number;
+  private offersType: string;
+  private pages: number[];
 
   constructor(private route: ActivatedRoute, private router: Router,
               private offerService: OfferService) { }
 
   ngOnInit() {
-    this.offerService.loadAllOffers()
-      .subscribe((data: Offer[]) => {
-        this.allOffers = data;
-        this.numberOfPages = Math.ceil(this.allOffers.length / 10);
-      });
+    this.loadParamsAndOffers();
+  }
+
+  loadParamsAndOffers() {
     this.route.params.subscribe(
       (params: Params) => {
         this.currentPage = +params['page'];
-        this.setOffersBasedOnType(params['type']);
-        setTimeout(() => {
-          this.setPages(this.currentPage);
-          this.setPageOffersByPage(this.currentPage);
-        },
-        200);
+        this.setPages(this.currentPage);
+        this.offersType = params['type'];
+        this.loadOffers();
       }
     );
   }
 
-  setOffersBasedOnType(type: string) {
-    console.log(type);
-  }
+              loadOffers() {
+                this.offerService.loadSpecificTypeOffers(this.offersType, this.currentPage)
+                  .subscribe((data: Offer[]) => {
+                    this.offers = data;
+                  },
+                  error => this.offers = null);
+              }
 
   setPages(currentPage: number) {
     this.pages = [];
     if (currentPage < 3) {
-      for (let i = 1; i <= this.numberOfPages; i++) {
+      for (let i = 1; i <= 5; i++) {
         this.pages.push(i);
       }
     } else {
       const firstPage = this.currentPage - 2;
       const lastPage = this.currentPage + 2;
-      for (let i = firstPage; i <= lastPage || i <= this.numberOfPages; i++) {
+      for (let i = firstPage; i <= lastPage; i++) {
         this.pages.push(i);
       }
     }
   }
 
-  setPageOffersByPage(page: number) {
-    this.pageOffers = [];
-    const firstIndex = page * 10 - 10;
-    let lastIndex = page * 10 - 1;
-    if (lastIndex > this.allOffers.length - 1) {
-      lastIndex = this.allOffers.length - 1;
-    }
-    for (let i = firstIndex; i <= lastIndex; i++) {
-      this.pageOffers.push(this.allOffers[i]);
-    }
-  }
-
   onPrevious() {
     if (this.currentPage > 1) {
-      this.router.navigate(['/offers', --this.currentPage]);
+      window.scrollTo(0, 0);
+      this.router.navigate(['/offers', this.offersType, --this.currentPage]);
     }
   }
 
   onNext() {
-    if (this.currentPage < this.numberOfPages) {
-      this.router.navigate(['/offers', ++this.currentPage]);
-    }
+    window.scrollTo(0, 0);
+    this.router.navigate(['/offers', this.offersType, ++this.currentPage]);
+  }
+
+  scrollToTop() {
+    window.scrollTo(0, 0);
   }
 }
