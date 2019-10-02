@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Offer } from 'src/app/entities/offer.entity';
 import { OfferService } from 'src/app/services/offer.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { SignedUserService } from 'src/app/auth/signin/signed-user.service';
 
 @Component({
   selector: 'app-offers-list',
@@ -15,8 +16,10 @@ export class OffersListComponent implements OnInit {
   private offersType: string;
   private pages: number[];
 
-  constructor(private route: ActivatedRoute, private router: Router,
-              private offerService: OfferService) { }
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private offerService: OfferService,
+              private signedUserService: SignedUserService) { }
 
   ngOnInit() {
     this.loadParamsAndOffers();
@@ -26,19 +29,27 @@ export class OffersListComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         this.currentPage = +params['page'];
-        this.setPages(this.currentPage);
         this.offersType = params['type'];
+        this.setPages(this.currentPage);
         this.loadOffers();
       }
     );
   }
 
               loadOffers() {
-                this.offerService.loadSpecificTypeOffers(this.offersType, this.currentPage)
+                if (this.offersType === 'my-offers') {
+                  this.offerService.loadSpecificUserOffers(this.signedUserService.getSignedUser().id)
                   .subscribe((data: Offer[]) => {
                     this.offers = data;
                   },
                   error => this.offers = null);
+                } else {
+                  this.offerService.loadSpecificTypeOffers(this.offersType, this.currentPage)
+                    .subscribe((data: Offer[]) => {
+                      this.offers = data;
+                    },
+                    error => this.offers = null);
+                }
               }
 
   setPages(currentPage: number) {

@@ -21,6 +21,10 @@ export class OfferService {
     return this.http.get(this.url + '/' + offerType + '/' + offerPage, {headers: this.headers});
   }
 
+  loadSpecificUserOffers(userId: number) {
+    return this.http.get(this.url + '/user/' + userId, {headers: this.headers});
+  }
+
   getOfferById(id: number) {
     return this.http.get(this.url + '/' + id, {headers: this.headers});
   }
