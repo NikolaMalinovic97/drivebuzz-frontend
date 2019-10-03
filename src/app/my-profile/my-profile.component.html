@@ -15,7 +15,7 @@
         </div>
         <!-- Div which displays user update -->
         <div *ngIf="changeInfoMode">
-          <app-user-update></app-user-update>
+          <app-user-update [user]="user"></app-user-update>
           <button type="button" 
                   class="btn btn-danger btn-lg btn-block mt-3"
                   (click)="onDismiss()">

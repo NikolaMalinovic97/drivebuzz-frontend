@@ -1,28 +1,42 @@
-<form>
+<form [formGroup]="updateForm" (ngSubmit)="onSave()">
   <div class="form-group">
     <label for="a">Username</label>
-    <input type="text" class="form-control">
+    <input type="text"
+           id="username" 
+           formControlName="username"
+           class="form-control">
   </div>
   <div class="form-group">
     <label for="b">First name</label>
-    <input type="text" class="form-control">
+    <input type="text" 
+           id="firstName" 
+           formControlName="firstName"
+           class="form-control">
   </div>
   <div class="form-group">
     <label for="c">Last name</label>
-    <input type="text" class="form-control">
+    <input type="text" 
+           class="form-control"
+           id="lastName" 
+           formControlName="lastName">
   </div>
   <div class="form-group">
     <label for="d">Email</label>
-    <input type="email" class="form-control">
+    <input type="email" 
+           class="form-control"
+           id="email" 
+           formControlName="email">
   </div>
   <div class="form-group">
     <label for="e">Phone</label>
-    <input type="text" class="form-control">
+    <input type="text" 
+           class="form-control"
+           id="phone" 
+           formControlName="phone">
   </div>
   <hr>
-  <button type="button" 
-          class="btn btn-success btn-lg btn-block"
-          (click)="onCancel()">
+  <button type="submit" 
+          class="btn btn-success btn-lg btn-block">
           Save
   </button>
 </form>

@@ -28,4 +28,8 @@ export class UserService {
   addUser(theUser: User) {
     return this.http.post<User>(this.url, theUser, {headers: this.headers});
   }
+
+  updateUser(theUser: User) {
+    return this.http.put<User>(this.url, theUser, {headers: this.headers});
+  }
 }
