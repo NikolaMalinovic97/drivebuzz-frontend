@@ -19,6 +19,8 @@ import { OffersSearchBarComponent } from './offers/offers-search-bar/offers-sear
 import { OffersListComponent } from './offers/offers-list/offers-list.component';
 import { OfferDetailComponent } from './offers/offer-detail/offer-detail.component';
 import { AuthGuard } from './services/guard/auth-guard.service';
+import { UserInfoComponent } from './my-profile/user-info/user-info.component';
+import { UserUpdateComponent } from './my-profile/user-update/user-update.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { AuthGuard } from './services/guard/auth-guard.service';
     DemandsComponent,
     OffersSearchBarComponent,
     OffersListComponent,
-    OfferDetailComponent
+    OfferDetailComponent,
+    UserInfoComponent,
+    UserUpdateComponent
   ],
   imports: [
     BrowserModule,

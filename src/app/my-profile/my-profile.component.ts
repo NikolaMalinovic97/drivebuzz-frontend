@@ -9,12 +9,21 @@ import { User } from '../entities/user.entity';
 })
 export class MyProfileComponent implements OnInit {
 
-  user: User;
+  private user: User;
+  private changeInfoMode: boolean;
 
   constructor(private signedUserService: SignedUserService) { }
 
   ngOnInit() {
     this.user = this.signedUserService.getSignedUser();
+    this.changeInfoMode = false;
   }
 
+  onChangeInfo() {
+    this.changeInfoMode = true;
+  }
+
+  onDismiss() {
+    this.changeInfoMode = false;
+  }
 }

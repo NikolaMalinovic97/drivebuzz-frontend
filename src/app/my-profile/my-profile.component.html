@@ -4,17 +4,24 @@
       <div class="info-wrapper">
         <h1>User Info</h1>
         <hr>
-        <h5>Username: <span class="info-value">{{ user.username }}</span></h5>
-        <hr>
-        <h5>First name: <span class="info-value">{{ user.userInfo.firstName }}</span></h5>
-        <hr>
-        <h5>Last name: <span class="info-value">{{ user.userInfo.lastName }}</span></h5>
-        <hr>
-        <h5>Email: <span class="info-value">{{ user.userInfo.email }}</span></h5>
-        <hr>
-        <h5>Phone: <span class="info-value">{{ user.userInfo.phone }}</span></h5>
-        <hr>
-        <button type="button" class="btn btn-primary btn-lg btn-block">Change info</button>
+        <!-- Div which displays user info -->
+        <div *ngIf="!changeInfoMode">
+          <app-user-info [user]="user"></app-user-info>
+          <button type="button" 
+                  class="btn btn-primary btn-lg btn-block"
+                  (click)="onChangeInfo()">
+                  Change info
+          </button>
+        </div>
+        <!-- Div which displays user update -->
+        <div *ngIf="changeInfoMode">
+          <app-user-update></app-user-update>
+          <button type="button" 
+                  class="btn btn-danger btn-lg btn-block mt-3"
+                  (click)="onDismiss()">
+                  Dismiss
+          </button>
+        </div>
         <br>
         <hr>
         <h5>Number of active offers: </h5>
