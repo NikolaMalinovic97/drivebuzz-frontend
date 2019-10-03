@@ -7,12 +7,13 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { OffersComponent } from './offers/offers.component';
 import { DemandsComponent } from './demands/demands.component';
 import { OfferDetailComponent } from './offers/offer-detail/offer-detail.component';
+import { AuthGuard } from './services/guard/auth-guard.service';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'my-profile', component: MyProfileComponent },
+  { path: 'my-profile', component: MyProfileComponent, canActivate: [AuthGuard] },
   { path: 'offers/:type/:page', component: OffersComponent },
   { path: 'offer-detail/:id', component: OfferDetailComponent },
   { path: 'demands', component: DemandsComponent },

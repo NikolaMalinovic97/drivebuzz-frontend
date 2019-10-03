@@ -18,6 +18,7 @@ import { DemandsComponent } from './demands/demands.component';
 import { OffersSearchBarComponent } from './offers/offers-search-bar/offers-search-bar.component';
 import { OffersListComponent } from './offers/offers-list/offers-list.component';
 import { OfferDetailComponent } from './offers/offer-detail/offer-detail.component';
+import { AuthGuard } from './services/guard/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { OfferDetailComponent } from './offers/offer-detail/offer-detail.compone
     }),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
