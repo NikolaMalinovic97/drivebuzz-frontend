@@ -23,6 +23,7 @@ import { UserInfoComponent } from './my-profile/user-info/user-info.component';
 import { UserUpdateComponent } from './my-profile/user-update/user-update.component';
 import { MyOffersComponent } from './my-profile/my-offers/my-offers.component';
 import { MyDemandsComponent } from './my-profile/my-demands/my-demands.component';
+import { CreateOfferComponent } from './offers/create-offer/create-offer.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MyDemandsComponent } from './my-profile/my-demands/my-demands.component
     UserInfoComponent,
     UserUpdateComponent,
     MyOffersComponent,
-    MyDemandsComponent
+    MyDemandsComponent,
+    CreateOfferComponent
   ],
   imports: [
     BrowserModule,

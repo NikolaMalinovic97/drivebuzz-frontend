@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewChecked, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Offer } from 'src/app/entities/offer.entity';
 
 @Component({

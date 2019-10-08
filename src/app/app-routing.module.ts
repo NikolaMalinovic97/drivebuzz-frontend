@@ -8,12 +8,14 @@ import { OffersComponent } from './offers/offers.component';
 import { DemandsComponent } from './demands/demands.component';
 import { OfferDetailComponent } from './offers/offer-detail/offer-detail.component';
 import { AuthGuard } from './services/guard/auth-guard.service';
+import { CreateOfferComponent } from './offers/create-offer/create-offer.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'my-profile', component: MyProfileComponent, canActivate: [AuthGuard] },
+  { path: 'offers/create-offer', component: CreateOfferComponent, canActivate: [AuthGuard] },
   { path: 'offers/:type/:page', component: OffersComponent },
   { path: 'offer-detail/:id', component: OfferDetailComponent },
   { path: 'demands', component: DemandsComponent },
