@@ -39,10 +39,10 @@ export class OffersListComponent implements OnInit {
               loadOffers() {
                 if (this.offersType === 'my-offers') {
                   this.offerService.loadSpecificUserOffers(this.signedUserService.getSignedUser().id)
-                  .subscribe((data: Offer[]) => {
-                    this.offers = data;
-                  },
-                  error => this.offers = null);
+                    .subscribe((data: Offer[]) => {
+                      this.offers = data;
+                    },
+                    error => this.offers = null);
                 } else {
                   this.offerService.loadSpecificTypeOffers(this.offersType, this.currentPage)
                     .subscribe((data: Offer[]) => {

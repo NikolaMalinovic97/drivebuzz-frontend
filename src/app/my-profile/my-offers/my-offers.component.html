@@ -1,0 +1,48 @@
+<!-- Offer wrapper -->
+<a  *ngIf="offer != undefined"
+    style="cursor: pointer;"
+    class="list-group-item clearfix mt-2"
+    [routerLink]="['/offer-detail', offer.id]">
+    <h3 class="list-group-item-heading text-center">
+        {{ offer.departurePlace }} - {{ offer.destinationPlace }}
+    </h3>
+    <div class="float-left">
+        <h4>Free seats: {{ offer.seatsNumber }}</h4> 
+        <p>Active: {{ offer.active }}</p>
+        <a>
+            {{ offer.user.username }}
+        </a>
+    </div>
+    <span>
+        <p class="list-group-item-text text-right">
+            Depart. date: {{ offer.departureDate }}
+        </p>
+        <p class="list-group-item-text text-right">
+            Depart. time: {{ offer.departureTime }}
+        </p>
+    </span>
+</a>
+
+<!-- Controls -->
+<div class="controlls-wrapper justify-content-center mt-2">
+  <a>
+    <i class="fas fa-3x fa-chevron-circle-left" 
+      (click)="onPrevious()">
+    </i>
+  </a>
+  <a>
+    <i class="fas fa-3x fa-chevron-circle-right" 
+      (click)="onNext()">
+    </i>
+  </a>
+</div>
+
+<hr>
+<button type="button" 
+        class="btn btn-primary btn-block">
+    view all
+</button>
+<button type="button" 
+        class="btn btn-success btn-block">
+    new offer
+</button>

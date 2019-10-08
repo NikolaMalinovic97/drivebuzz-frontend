@@ -24,10 +24,14 @@
         </div>
         <br>
         <hr>
-        <h5>Number of active offers: </h5>
+        <h5>Number of active offers: 
+          <span class="info-value">{{ numberOfActiveOffers }}</span>
+        </h5>
         <h5>Number of active demands: </h5>
         <hr>
-        <h5>Number of done offers: </h5>
+        <h5>Number of done offers: 
+          <span class="info-value">{{ numberOfDoneOffers }}</span>
+        </h5>
         <h5>Number of done demands: </h5>
         <hr>
       </div>
@@ -37,7 +41,7 @@
           <div class="offers-wrapper">
             <h1>My Offers</h1>
             <hr>
-            <button type="button" class="btn btn-primary btn-block">view all</button>
+            <app-my-offers [offers]="offers"></app-my-offers>
           </div>
           <div class="offers-wrapper mt-4">
             <h1>My Demands</h1>
